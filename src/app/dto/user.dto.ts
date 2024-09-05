@@ -1,9 +1,10 @@
-export interface User {
-  name: string;
-  email: string;
-  role: string;
+export interface UserDto {
+  name?: string;
+  password?: string;
+  email?: string;
+  role?: string;
   isOnboarded: number;
-  createdAt?: Date;
-  deletedAt?: Date;
-  updatedAt?: Date;
+  created_at?: Date;
+  deleted_at?: Date;
+  updated_at?: Date;
 }
