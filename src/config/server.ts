@@ -4,6 +4,7 @@ import cors from "@koa/cors";
 import dotenv from "dotenv";
 
 import { router } from "../routes/index";
+import { AppDataSource } from "./database/database.config";
 
 dotenv.config();
 
@@ -26,5 +27,13 @@ server.use(async (ctx, next) => {
   const ms = Date.now() - start;
   ctx.set("X-Response-Time", `${ms}ms`);
 });
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source initialized");
+  })
+  .catch((error) =>
+    console.log("Error during Data Source initialization", error)
+  );
 
 export { server };

@@ -9,6 +9,9 @@ export class User {
   name!: string;
 
   @Column({ nullable: false })
+  password!: string;
+
+  @Column({ nullable: false })
   email!: string;
 
   @Column({ default: "user" })
@@ -21,7 +24,7 @@ export class User {
   created_at?: Date;
 
   @Column({ nullable: true })
-  update_at?: Date;
+  updated_at?: Date;
 
   @Column({ nullable: true })
   deleted_at?: Date;
