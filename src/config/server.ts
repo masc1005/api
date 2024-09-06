@@ -13,27 +13,23 @@ const server = new Koa();
 server.use(bodyParser());
 server.use(cors());
 
-server.use(router.routes()).use(router.allowedMethods);
-
-server.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.get("X-Response-Time");
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
-});
+server.use(router.routes());
+server.use(router.allowedMethods());
 
 server.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
   ctx.set("X-Response-Time", `${ms}ms`);
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 AppDataSource.initialize()
   .then(() => {
     console.log("Data Source initialized");
   })
-  .catch((error) =>
-    console.log("Error during Data Source initialization", error)
-  );
+  .catch((error) => {
+    console.error("Error during Data Source initialization", error);
+  });
 
 export { server };

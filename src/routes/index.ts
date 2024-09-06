@@ -3,9 +3,7 @@ import { usersRouter } from "./user.routes";
 import { koaSwagger } from "koa2-swagger-ui";
 import swaggerSpec from "../config/swagger/index";
 
-const router = new Router({
-  prefix: "/api",
-});
+const router = new Router({});
 
 router.get(
   "/docs",

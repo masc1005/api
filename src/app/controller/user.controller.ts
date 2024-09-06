@@ -10,7 +10,7 @@ export class UserController {
       const data = ctx.request.body as UserDto;
       const user = await this.userUseCases.singinOrRegister(data);
 
-      if (user.token) {
+      if (user?.token) {
         ctx.status = 200;
         ctx.body = {
           user,
