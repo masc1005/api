@@ -5,6 +5,7 @@
 - primeiramente preencher as variaveis de ambiente do .env.example
 - Após isso executar o comando: `Docker compose up -d`
 - O banco de dados postgres esta funcionando e o pgadmin também
+- Rodar o caomando: `npm install`
 - Rodar o caomando: `npm run build`
 - Rodar o caomando: `npm run migration:run`
 
